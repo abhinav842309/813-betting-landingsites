@@ -7,8 +7,6 @@ import {
   Zap, 
   Headphones,
   Download,
-  Apple,
-  PlayCircle,
   ChevronRight,
   Star,
   Trophy,
@@ -293,20 +291,13 @@ const Home = () => {
                   nosso aplicativo rápido e seguro.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4">
-                  <Button
-                    size="lg"
-                    className="bg-white text-black hover:bg-white/90 font-bold px-6"
-                  >
-                    <Apple className="w-5 h-5 mr-2" />
-                    App Store
-                  </Button>
-                  <Button
-                    size="lg"
-                    className="bg-white text-black hover:bg-white/90 font-bold px-6"
-                  >
-                    <PlayCircle className="w-5 h-5 mr-2" />
-                    Google Play
-                  </Button>
+                 
+                    <Button size="lg"
+                     className="bg-white text-black hover:bg-white/90 font-bold px-10 py-5 text-xl btn-magnetic animate-pulse-glow"
+                     onClick={() => window.open('https://example.com', '_blank', 'noopener,noreferrer')} >
+                     <Download className="w-5 h-5 mr-2" />
+                     Baixar App
+                     </Button>
                 </div>
               </div>
 
