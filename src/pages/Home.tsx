@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { 
@@ -10,21 +10,60 @@ import {
   ChevronRight,
   Star,
   Trophy,
-  Clock
+  Clock,
+
 } from 'lucide-react';
 
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
-  CarouselPrevious,
   CarouselNext,
+  CarouselPrevious,
+  type CarouselApi,
 } from '@/components/ui/carousel';
+import Autoplay from 'embla-carousel-autoplay';
 
 const Home = () => {
   const heroRef = useRef<HTMLDivElement>(null);
   const phoneRef = useRef<HTMLDivElement>(null);
-  const [carouselApi, setCarouselApi] = useState<any>(null);
+  const [carouselApi, setCarouselApi] = useState<CarouselApi | null>(null);
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const plugin = useRef(Autoplay({ delay: 3000, stopOnInteraction: true }));
+
+  // Promo items data
+  const promoItems = [
+    {
+      src: '/promo-1.jpg',
+      title: 'Cashback Diário',
+      subtitle: 'Receba até 20% de volta em apostas perdidas',
+    },
+    {
+      src: '/promo-2.jpg',
+      title: 'Bônus de Boas-Vindas',
+      subtitle: 'Ganhe mais em suas primeiras apostas',
+    },
+    {
+      src: '/promo-3.jpg',
+      title: 'Apostas ao Vivo',
+      subtitle: 'Cobertura total das principais partidas',
+    },
+    {
+      src: '/promo-4.jpg',
+      title: 'Multiplicador de Odds',
+      subtitle: 'Aumente seus ganhos em eventos especiais',
+    },
+    {
+      src: '/promo-5.jpg',
+      title: 'VIP Program',
+      subtitle: 'Benefícios exclusivos para membros VIP',
+    },
+    {
+      src: '/promo-6.jpg',
+      title: 'Indique e Ganhe',
+      subtitle: 'Ganhe bônus por cada amigo convidado',
+    },
+  ];
 
   useEffect(() => {
     // Parallax effect for phone
@@ -42,16 +81,25 @@ const Home = () => {
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
 
-  // Auto-slide carousel
+  // Handle carousel selection change
+  const onSelect = useCallback((api: CarouselApi) => {
+    if (!api) return;
+    setCurrentSlide(api.selectedScrollSnap());
+  }, []);
+
+  // Set up carousel event listeners
   useEffect(() => {
     if (!carouselApi) return;
 
-    const intervalId = setInterval(() => {
-      carouselApi.scrollNext();
-    }, 1500);
+    onSelect(carouselApi);
+    carouselApi.on('select', () => onSelect(carouselApi));
+    carouselApi.on('reInit', () => onSelect(carouselApi));
 
-    return () => clearInterval(intervalId);
-  }, [carouselApi]);
+    return () => {
+      carouselApi.off('select', () => onSelect(carouselApi));
+      carouselApi.off('reInit', () => onSelect(carouselApi));
+    };
+  }, [carouselApi, onSelect]);
 
   const features = [
     {
@@ -187,67 +235,98 @@ const Home = () => {
           </div>
         </div>
       </section>
-       {/* Promo carousel section */}
-<section className="py-16 lg:py-24">
-  <div className="w-full px-4 sm:px-6 lg:px-12 xl:px-20">
-    <div className="mb-10 text-center">
-      <p className="text-sm uppercase tracking-[0.3em] text-[#00d084]/70">
-        PROMOS
-      </p>
-      <h2 className="text-3xl lg:text-4xl font-black text-white">
-        Destaques em movimento
-      </h2>
-    </div>
 
-    <Carousel
-      opts={{ loop: true, align: 'start', skipSnaps: false }}
-      setApi={setCarouselApi}
-      className="relative"
-    >
-      <CarouselContent className="flex">
-        {[
-          {
-            src: '/promo-1.png',
-            title: 'Cashback Diário',
-            subtitle: 'Receba até 20% de volta em apostas perdidas',
-          },
-          {
-            src: '/promo-2.png',
-            title: 'Bônus de Boas-Vindas',
-            subtitle: 'Ganhe mais em suas primeiras apostas',
-          },
-          {
-            src: '/promo-3.png',
-            title: 'Apostas ao Vivo',
-            subtitle: 'Cobertura total das principais partidas',
-          },
-        ].map((item, index) => (
-          <CarouselItem key={index}>
-            <div className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/5 shadow-2xl">
-              <img
-                src={item.src}
-                alt={item.title}
-                className="h-[360px] w-full object-cover transition duration-500 hover:scale-[1.02]"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0d0d0d]/85 via-transparent to-transparent" />
-              <div className="absolute bottom-0 left-0 right-0 p-8">
-                <p className="text-sm uppercase tracking-[0.3em] text-[#00d084] mb-2">
-                  {item.subtitle}
-                </p>
-                <h3 className="text-2xl font-black text-white">
-                  {item.title}
-                </h3>
+      {/* Promo carousel section - FIXED */}
+      <section className="py-16 lg:py-24 overflow-hidden">
+        <div className="w-full px-4 sm:px-6 lg:px-12 xl:px-20">
+          
+          {/* Heading */}
+          <div className="mb-10 text-center">
+            <p className="text-sm uppercase tracking-[0.3em] text-[#00d084]/70 mb-2">
+              PROMOS
+            </p>
+            <h2 className="text-3xl lg:text-4xl font-black text-white">
+              Destaques em movimento
+            </h2>
+          </div>
+
+          {/* Carousel - Fixed for smooth circular sliding */}
+          <Carousel
+            opts={{
+              loop: true,
+              align: "start",
+              skipSnaps: false,
+              dragFree: false,
+            }}
+            plugins={[plugin.current]}
+            setApi={setCarouselApi}
+            className="w-full"
+          >
+            <CarouselContent className="-ml-3 md:-ml-4">
+              {promoItems.map((item, index) => (
+                <CarouselItem
+  key={index}
+  className="pl-3 md:pl-4 basis-[90%] sm:basis-[70%] md:basis-[60%] lg:basis-[50%]"
+>
+                  <div className="group relative overflow-hidden rounded-2xl md:rounded-3xl border border-white/10 bg-white/5 shadow-xl hover:border-[#00d084]/30 transition-all duration-300">
+                    
+                    {/* Image Container */}
+                    {/* Image Container */}
+                <div className="relative w-full aspect-[1072/552] bg-[#0d0d0d] flex items-center justify-center overflow-hidden">
+                  <img
+                    src={item.src}
+                    alt={item.title}
+                    className="w-full h-full object-contain scale-125 transition-transform duration-500"
+                  />
+
+
+                     {/* Overlay */}
+                     <div className="absolute inset-0 bg-gradient-to-t from-[#0d0d0d] via-transparent to-transparent" />
+                   </div>
+
+                    {/* Text Content */}
+                    <div className="absolute bottom-0 left-0 right-0 p-4 md:p-6">
+                      <p className="text-xs uppercase tracking-[0.15em] text-[#00d084] mb-1">
+                        {item.subtitle}
+                      </p>
+                      <h3 className="text-lg md:text-xl font-bold text-white group-hover:text-[#00d084] transition-colors">
+                        {item.title}
+                      </h3>
+                    </div>
+
+                    {/* Hover glow effect */}
+                    <div className="absolute inset-0 bg-[#00d084]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+                  </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+
+            {/* Custom Navigation Buttons */}
+            <div className="flex items-center justify-center gap-4 mt-8">
+              <CarouselPrevious className="static translate-y-0 bg-white/10 hover:bg-[#00d084] text-white hover:text-black border-0 w-12 h-12 rounded-full transition-all duration-300" />
+              
+              {/* Dot indicators */}
+              <div className="flex items-center gap-2">
+                {promoItems.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => carouselApi?.scrollTo(index)}
+                    className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                      currentSlide === index 
+                        ? 'w-8 bg-[#00d084]' 
+                        : 'bg-white/30 hover:bg-white/50'
+                    }`}
+                    aria-label={`Go to slide ${index + 1}`}
+                  />
+                ))}
               </div>
-            </div>
-          </CarouselItem>
-        ))}
-      </CarouselContent>
 
-      <CarouselPrevious className="bg-white/10 text-white hover:bg-white/20" />
-      <CarouselNext className="bg-white/10 text-white hover:bg-white/20" />
-    </Carousel>
-  </div>
-</section>
+              <CarouselNext className="static translate-y-0 bg-white/10 hover:bg-[#00d084] text-white hover:text-black border-0 w-12 h-12 rounded-full transition-all duration-300" />
+            </div>
+          </Carousel>
+        </div>
+      </section>
+
       {/* Features Section */}
       <section className="py-20 lg:py-32 relative">
         <div className="w-full px-4 sm:px-6 lg:px-12 xl:px-20">
@@ -371,13 +450,14 @@ const Home = () => {
                   nosso aplicativo rápido e seguro.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4">
-                 
-                    <Button size="lg"
-                     className="bg-white text-black hover:bg-white/90 font-bold px-10 py-5 text-xl btn-magnetic animate-pulse-glow"
-                     onClick={() => window.open('https://example.com', '_blank', 'noopener,noreferrer')} >
-                     <Download className="w-5 h-5 mr-2" />
-                     Baixar App
-                     </Button>
+                  <Button 
+                    size="lg"
+                    className="bg-white text-black hover:bg-white/90 font-bold px-10 py-5 text-xl btn-magnetic animate-pulse-glow"
+                    onClick={() => window.open('https://example.com', '_blank', 'noopener,noreferrer')} 
+                  >
+                    <Download className="w-5 h-5 mr-2" />
+                    Baixar App
+                  </Button>
                 </div>
               </div>
 

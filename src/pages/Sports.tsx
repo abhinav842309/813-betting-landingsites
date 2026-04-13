@@ -28,7 +28,7 @@ const Sports = () => {
 
   const sports = [
     {
-      image: '/sports-hero.jpg',
+      image: '/soccer.jpg',
       title: 'Futebol',
       subtitle: 'Aposte nos Maiores Campeonatos',
       description: 'O futebol é o principal destaque da plataforma. Aposte nos maiores campeonatos nacionais e internacionais, incluindo jogos entre seleções.',
