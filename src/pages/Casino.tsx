@@ -23,22 +23,22 @@ const Casino = () => {
 
   const games = [
     {
-      image: '/blackjack.jpg',
+      image: '/Blackjack.png',
       title: 'Blackjack Ao Vivo',
       description: 'Um dos jogos de mesa mais populares do mundo. Teste sua estratégia contra o dealer, mire nos 21 pontos e aproveite mesas clássicas e opções de apostas laterais.',
     },
     {
-      image: '/baccarat.jpg',
+      image: '/Bacarat Ao  vivo.png',
       title: 'Baccarat Ao Vivo',
       description: 'Perfeito para aqueles que preferem regras simples e apostas rápidas. Aposte em vitórias de Jogador, Banqueiro ou Empate, tudo em tempo real com dealers profissionais.',
     },
     {
-      image: '/roulette.jpg',
+      image: '/Roleta.png',
       title: 'Roleta Ao Vivo',
       description: 'A emoção da roleta tradicional ganha vida. A 813bet oferece mesas de Roleta Europeia e Americana com transmissão em HD e resultados transparentes.',
     },
     {
-      image: '/casino-hero.jpg',
+      image: '/game show.png',
       title: 'Game Shows',
       description: 'Game shows ao vivo modernos como Crazy Time combinam roleta, bônus especiais, mini-jogos interativos e multiplicadores altos para uma experiência dinâmica.',
     },
@@ -63,7 +63,7 @@ const Casino = () => {
       {/* Hero Section */}
       <section className="relative py-20 lg:py-32 overflow-hidden">
         <div className="absolute inset-0">
-          <img src="/casino-hero.jpg" alt="Casino Background" className="w-full h-full object-cover opacity-40" />
+          <img src="/casino-hero.png" alt="Casino Background" className="w-full h-full object-cover opacity-40" />
           <div className="absolute inset-0 bg-gradient-to-r from-[#0d0d0d] via-[#0d0d0d]/80 to-transparent" />
           <div className="absolute inset-0 bg-gradient-to-t from-[#0d0d0d] via-transparent to-[#0d0d0d]/50" />
         </div>

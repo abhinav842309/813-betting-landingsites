@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { 
@@ -13,9 +13,18 @@ import {
   Clock
 } from 'lucide-react';
 
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselPrevious,
+  CarouselNext,
+} from '@/components/ui/carousel';
+
 const Home = () => {
   const heroRef = useRef<HTMLDivElement>(null);
   const phoneRef = useRef<HTMLDivElement>(null);
+  const [carouselApi, setCarouselApi] = useState<any>(null);
 
   useEffect(() => {
     // Parallax effect for phone
@@ -32,6 +41,17 @@ const Home = () => {
     window.addEventListener('mousemove', handleMouseMove, { passive: true });
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
+
+  // Auto-slide carousel
+  useEffect(() => {
+    if (!carouselApi) return;
+
+    const intervalId = setInterval(() => {
+      carouselApi.scrollNext();
+    }, 1500);
+
+    return () => clearInterval(intervalId);
+  }, [carouselApi]);
 
   const features = [
     {
@@ -167,7 +187,67 @@ const Home = () => {
           </div>
         </div>
       </section>
+       {/* Promo carousel section */}
+<section className="py-16 lg:py-24">
+  <div className="w-full px-4 sm:px-6 lg:px-12 xl:px-20">
+    <div className="mb-10 text-center">
+      <p className="text-sm uppercase tracking-[0.3em] text-[#00d084]/70">
+        PROMOS
+      </p>
+      <h2 className="text-3xl lg:text-4xl font-black text-white">
+        Destaques em movimento
+      </h2>
+    </div>
 
+    <Carousel
+      opts={{ loop: true, align: 'start', skipSnaps: false }}
+      setApi={setCarouselApi}
+      className="relative"
+    >
+      <CarouselContent className="flex">
+        {[
+          {
+            src: '/promo-1.png',
+            title: 'Cashback Diário',
+            subtitle: 'Receba até 20% de volta em apostas perdidas',
+          },
+          {
+            src: '/promo-2.png',
+            title: 'Bônus de Boas-Vindas',
+            subtitle: 'Ganhe mais em suas primeiras apostas',
+          },
+          {
+            src: '/promo-3.png',
+            title: 'Apostas ao Vivo',
+            subtitle: 'Cobertura total das principais partidas',
+          },
+        ].map((item, index) => (
+          <CarouselItem key={index}>
+            <div className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/5 shadow-2xl">
+              <img
+                src={item.src}
+                alt={item.title}
+                className="h-[360px] w-full object-cover transition duration-500 hover:scale-[1.02]"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0d0d0d]/85 via-transparent to-transparent" />
+              <div className="absolute bottom-0 left-0 right-0 p-8">
+                <p className="text-sm uppercase tracking-[0.3em] text-[#00d084] mb-2">
+                  {item.subtitle}
+                </p>
+                <h3 className="text-2xl font-black text-white">
+                  {item.title}
+                </h3>
+              </div>
+            </div>
+          </CarouselItem>
+        ))}
+      </CarouselContent>
+
+      <CarouselPrevious className="bg-white/10 text-white hover:bg-white/20" />
+      <CarouselNext className="bg-white/10 text-white hover:bg-white/20" />
+    </Carousel>
+  </div>
+</section>
       {/* Features Section */}
       <section className="py-20 lg:py-32 relative">
         <div className="w-full px-4 sm:px-6 lg:px-12 xl:px-20">

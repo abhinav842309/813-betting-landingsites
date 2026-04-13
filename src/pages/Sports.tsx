@@ -35,7 +35,7 @@ const Sports = () => {
       markets: ['Resultado final', 'Dupla chance', 'Ambas as equipes marcam', 'Total de gols', 'Escanteios, cartões e faltas'],
     },
     {
-      image: '/basketball.jpg',
+      image: '/BASKETBALL.png',
       title: 'Basquete',
       subtitle: 'NBA e Grandes Ligas',
       description: 'Aposte em jogos da NBA e outras ligas proeminentes, cobrindo tudo desde a temporada regular até playoffs e finais.',
@@ -101,7 +101,7 @@ const Sports = () => {
       {/* Hero Section */}
       <section className="relative py-20 lg:py-32 overflow-hidden">
         <div className="absolute inset-0">
-          <img src="/sports-hero.jpg" alt="Sports Background" className="w-full h-full object-cover opacity-40" />
+          <img src="/sports-hero.png" alt="Sports Background" className="w-full h-full object-cover opacity-40" />
           <div className="absolute inset-0 bg-gradient-to-r from-[#0d0d0d] via-[#0d0d0d]/80 to-transparent" />
           <div className="absolute inset-0 bg-gradient-to-t from-[#0d0d0d] via-transparent to-[#0d0d0d]/50" />
         </div>
