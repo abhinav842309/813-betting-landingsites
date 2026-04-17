@@ -35,48 +35,39 @@ const Home = () => {
   const promoItems = [
     {
       src: '/promo-1.jpg',
-      title: 'Cashback Diário',
-      subtitle: 'Receba até 20% de volta em apostas perdidas',
+      
     },
     {
       src: '/promo-2.jpg',
-      title: 'Bônus de Boas-Vindas',
-      subtitle: 'Ganhe mais em suas primeiras apostas',
+    
     },
     {
       src: '/promo-3.jpg',
-      title: 'Apostas ao Vivo',
-      subtitle: 'Cobertura total das principais partidas',
+      
     },
     {
       src: '/promo-4.jpg',
-      title: 'Multiplicador de Odds',
-      subtitle: 'Aumente seus ganhos em eventos especiais',
+     
     },
     {
       src: '/promo-5.jpg',
-      title: 'VIP Program',
-      subtitle: 'Benefícios exclusivos para membros VIP',
+   
     },
     {
       src: '/promo-6.jpg',
-      title: 'Indique e Ganhe',
-      subtitle: 'Ganhe bônus por cada amigo convidado',
+    
     },
     {
       src: '/promo-7.jpg',
-      title: 'Indique e Ganhe',
-      subtitle: 'Ganhe bônus por cada amigo convidado',
+      
     },
     {
       src: '/promo-8.jpg',
-      title: 'Indique e Ganhe',
-      subtitle: 'Ganhe bônus por cada amigo convidado',
+     
     },
     {
       src: '/promo-9.jpg',
-      title: 'Indique e Ganhe',
-      subtitle: 'Ganhe bônus por cada amigo convidado',
+     
     },
   ];
 
@@ -277,7 +268,7 @@ const Home = () => {
                       {/* FIX 5: Removed scale-125 which was causing overflow; use object-cover instead */}
                       <img
                         src={item.src}
-                        alt={item.title}
+                        alt={'loading'}
                         className="w-full h-full object-cover transition-transform duration-500"
                       />
 
@@ -285,15 +276,8 @@ const Home = () => {
                       <div className="absolute inset-0 bg-gradient-to-t from-[#0d0d0d] via-transparent to-transparent" />
                     </div>
 
-                    {/* Text Content */}
-                    <div className="absolute bottom-0 left-0 right-0 p-4 md:p-6">
-                      <p className="text-xs uppercase tracking-[0.15em] text-[#00d084] mb-1">
-                        {item.subtitle}
-                      </p>
-                      <h3 className="text-lg md:text-xl font-bold text-white group-hover:text-[#00d084] transition-colors">
-                        {item.title}
-                      </h3>
-                    </div>
+                   
+                    
 
                     {/* Hover glow effect */}
                     <div className="absolute inset-0 bg-[#00d084]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
