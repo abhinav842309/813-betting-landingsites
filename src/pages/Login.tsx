@@ -13,7 +13,10 @@ import {
   Key,
   AlertTriangle,
   QrCode,
-  Clock
+  Clock,
+  Eye,
+  MousePointer,
+  Info
 } from 'lucide-react';
 
 const Login = () => {
@@ -104,7 +107,7 @@ const Login = () => {
   return (
     <div className="min-h-screen bg-[#0d0d0d] pt-20">
       {/* Hero Section */}
-      <section className="relative py-20 lg:py-32 overflow-hidden">
+      <section className="relative py-16 lg:py-28 overflow-hidden">
         {/* Background */}
         <div className="absolute inset-0">
           <div className="absolute inset-0 bg-gradient-to-br from-[#00d084]/10 via-transparent to-[#00d084]/5" />
@@ -112,7 +115,11 @@ const Login = () => {
         </div>
 
         <div className="relative w-full px-4 sm:px-6 lg:px-12 xl:px-20">
-          <div className="max-w-4xl mx-auto text-center space-y-8">
+          <div className="max-w-4xl mx-auto text-center space-y-6">
+            <div className="inline-flex items-center space-x-2 bg-[#00d084]/10 border border-[#00d084]/30 rounded-full px-4 py-2 mb-4">
+              <Info className="w-4 h-4 text-[#00d084]" />
+              <span className="text-[#00d084] text-sm font-medium">Guia Completo de Login</span>
+            </div>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-white leading-tight">
               813bet <span className="text-[#00d084]">Login</span>
             </h1>
@@ -121,20 +128,20 @@ const Login = () => {
               explore apostas esportivas, cassino ao vivo, slots e promoções exclusivas.
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-4">
-              <a href="https://813bet.one" target="_blank" rel="noopener noreferrer">
+              <a href="[813bet.one](https://813bet.one)" target="_blank" rel="noopener noreferrer">
                 <Button
                   size="lg"
-                  className="bg-[#00d084] hover:bg-[#00b874] text-black font-bold px-8 py-6 text-lg btn-magnetic animate-pulse-glow"
+                  className="bg-[#00d084] hover:bg-[#00b874] text-black font-bold px-8 py-6 text-lg btn-magnetic animate-pulse-glow w-full sm:w-auto"
                 >
                   Entrar na 813bet
                   <ArrowRight className="w-5 h-5 ml-2" />
                 </Button>
               </a>
-              <a href="https://813bet.one" target="_blank" rel="noopener noreferrer">
+              <a href="[813bet.one](https://813bet.one)" target="_blank" rel="noopener noreferrer">
                 <Button
                   size="lg"
                   variant="outline"
-                  className="border-white/30 text-white hover:bg-white/10 px-8 py-6 text-lg"
+                  className="border-white/30 text-white hover:bg-white/10 px-8 py-6 text-lg w-full sm:w-auto"
                 >
                   Cadastre-se
                 </Button>
@@ -144,8 +151,112 @@ const Login = () => {
         </div>
       </section>
 
+      {/* Visual Guide Section - NEW */}
+      <section className="py-16 lg:py-24 border-t border-white/5">
+        <div className="w-full px-4 sm:px-6 lg:px-12 xl:px-20">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl lg:text-4xl font-black text-white mb-4">
+                Veja Como é <span className="text-[#00d084]">Fácil Fazer Login</span>
+              </h2>
+              <p className="text-white/60 text-lg max-w-2xl mx-auto">
+                Confira o passo a passo visual para acessar sua conta na 813bet
+              </p>
+            </div>
+
+            <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+              {/* Guide Image */}
+              <div className="relative group order-2 lg:order-1">
+                <div className="absolute -inset-1 bg-gradient-to-r from-[#00d084]/50 to-[#00d084]/20 rounded-3xl blur-lg opacity-50 group-hover:opacity-75 transition-opacity duration-300" />
+                <div className="relative bg-[#1a1a1a] border border-white/10 rounded-3xl p-4 sm:p-6 overflow-hidden">
+                  <img 
+                    src="logindemo.jpg" 
+                    alt="Guia visual de login 813bet mostrando as opções de email e telefone"
+                    className="w-full h-auto rounded-2xl shadow-2xl"
+                  />
+                 
+                </div>
+              </div>
+
+              {/* Guide Steps */}
+              <div className="space-y-6 order-1 lg:order-2">
+                <div className="bg-white/5 border border-white/10 rounded-2xl p-5 sm:p-6 hover:border-[#00d084]/30 transition-colors">
+                  <div className="flex items-start space-x-4">
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-[#00d084] flex items-center justify-center flex-shrink-0">
+                      <span className="text-black font-bold text-lg sm:text-xl">1</span>
+                    </div>
+                    <div>
+                      <h3 className="text-white font-bold text-base sm:text-lg mb-2">Escolha o Método de Login</h3>
+                      <p className="text-white/60 text-sm leading-relaxed">
+                        Na tela de login, você verá duas abas: <strong className="text-[#00d084]">Correio</strong> (E-mail) e <strong className="text-[#00d084]">Telefone</strong>. 
+                        Selecione a opção que preferir para acessar sua conta.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="bg-white/5 border border-white/10 rounded-2xl p-5 sm:p-6 hover:border-[#00d084]/30 transition-colors">
+                  <div className="flex items-start space-x-4">
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-[#00d084] flex items-center justify-center flex-shrink-0">
+                      <span className="text-black font-bold text-lg sm:text-xl">2</span>
+                    </div>
+                    <div>
+                      <h3 className="text-white font-bold text-base sm:text-lg mb-2">Insira Suas Credenciais</h3>
+                      <p className="text-white/60 text-sm leading-relaxed">
+                        Digite seu <strong className="text-[#00d084]">e-mail ou número de telefone</strong> (+55 para Brasil) 
+                        e sua <strong className="text-[#00d084]">senha</strong>. Use o ícone do olho para visualizar a senha digitada.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="bg-white/5 border border-white/10 rounded-2xl p-5 sm:p-6 hover:border-[#00d084]/30 transition-colors">
+                  <div className="flex items-start space-x-4">
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-[#00d084] flex items-center justify-center flex-shrink-0">
+                      <span className="text-black font-bold text-lg sm:text-xl">3</span>
+                    </div>
+                    <div>
+                      <h3 className="text-white font-bold text-base sm:text-lg mb-2">Código de Verificação (Telefone)</h3>
+                      <p className="text-white/60 text-sm leading-relaxed">
+                        Se usar telefone, clique em <strong className="text-[#00d084]">Código</strong> para receber o SMS. 
+                        Digite os 4 dígitos recebidos nos campos indicados.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="bg-white/5 border border-white/10 rounded-2xl p-5 sm:p-6 hover:border-[#00d084]/30 transition-colors">
+                  <div className="flex items-start space-x-4">
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-[#00d084] flex items-center justify-center flex-shrink-0">
+                      <span className="text-black font-bold text-lg sm:text-xl">4</span>
+                    </div>
+                    <div>
+                      <h3 className="text-white font-bold text-base sm:text-lg mb-2">Acesse ou Cadastre-se</h3>
+                      <p className="text-white/60 text-sm leading-relaxed">
+                        Clique em <strong className="text-[#00d084]">Entrar</strong> para acessar sua conta ou em 
+                        <strong className="text-[#00d084]"> Criar Conta</strong> se ainda não tiver cadastro.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <a href="[813bet.one](https://813bet.one)" target="_blank" rel="noopener noreferrer" className="block">
+                  <Button
+                    size="lg"
+                    className="bg-[#00d084] hover:bg-[#00b874] text-black font-bold px-8 w-full"
+                  >
+                    <MousePointer className="w-5 h-5 mr-2" />
+                    Ir Para Página de Login
+                  </Button>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* How to Login Section */}
-      <section className="py-20 lg:py-32 border-t border-white/5">
+      <section className="py-16 lg:py-24 border-t border-white/5">
         <div className="w-full px-4 sm:px-6 lg:px-12 xl:px-20">
           <div className="text-center mb-12">
             <h2 className="text-3xl lg:text-5xl font-black text-white mb-4">
@@ -157,47 +268,48 @@ const Login = () => {
           </div>
 
           {/* Tabs */}
-          <div className="flex flex-wrap justify-center gap-2 mb-12">
+          <div className="flex flex-wrap justify-center gap-2 sm:gap-3 mb-12">
             {[
-              { id: 'phone', label: 'Login com Telefone', icon: Smartphone },
-              { id: 'email', label: 'Login com E-mail', icon: Mail },
-              { id: 'app', label: 'Login pelo App', icon: Download },
+              { id: 'phone', label: 'Telefone', fullLabel: 'Login com Telefone', icon: Smartphone },
+              { id: 'email', label: 'E-mail', fullLabel: 'Login com E-mail', icon: Mail },
+              { id: 'app', label: 'App', fullLabel: 'Login pelo App', icon: Download },
             ].map((tab) => (
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id as typeof activeTab)}
-                className={`flex items-center space-x-2 px-6 py-3 rounded-xl font-medium transition-all duration-300 ${
+                className={`flex items-center space-x-2 px-4 sm:px-6 py-3 rounded-xl font-medium transition-all duration-300 ${
                   activeTab === tab.id
                     ? 'bg-[#00d084] text-black'
                     : 'bg-white/5 text-white/70 hover:bg-white/10 hover:text-white'
                 }`}
               >
                 <tab.icon className="w-5 h-5" />
-                <span>{tab.label}</span>
+                <span className="hidden sm:inline">{tab.fullLabel}</span>
+                <span className="sm:hidden">{tab.label}</span>
               </button>
             ))}
           </div>
 
           {/* Content */}
           <div className="max-w-5xl mx-auto">
-            <div className="bg-white/5 border border-white/10 rounded-3xl p-8 lg:p-12">
-              <h3 className="text-2xl lg:text-3xl font-bold text-white mb-4">
+            <div className="bg-white/5 border border-white/10 rounded-3xl p-6 sm:p-8 lg:p-12">
+              <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-white mb-4">
                 {currentMethod.title}
               </h3>
-              <p className="text-white/70 text-lg mb-8 leading-relaxed">
+              <p className="text-white/70 text-base sm:text-lg mb-8 leading-relaxed">
                 {currentMethod.description}
               </p>
 
-              <div className="grid md:grid-cols-3 gap-6">
+              <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
                 {currentMethod.steps.map((step, index) => (
                   <div
                     key={index}
-                    className="bg-white/5 border border-white/10 rounded-2xl p-6 card-hover"
+                    className="bg-white/5 border border-white/10 rounded-2xl p-5 sm:p-6 card-hover"
                   >
-                    <div className="w-14 h-14 rounded-xl bg-[#00d084]/10 flex items-center justify-center mb-4">
-                      <step.icon className="w-7 h-7 text-[#00d084]" />
+                    <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-[#00d084]/10 flex items-center justify-center mb-4">
+                      <step.icon className="w-6 h-6 sm:w-7 sm:h-7 text-[#00d084]" />
                     </div>
-                    <h4 className="text-lg font-bold text-white mb-2">
+                    <h4 className="text-base sm:text-lg font-bold text-white mb-2">
                       {step.title}
                     </h4>
                     <p className="text-white/60 text-sm leading-relaxed">
@@ -208,7 +320,7 @@ const Login = () => {
               </div>
 
               <div className="mt-8 text-center">
-                <a href="https://813bet.one" target="_blank" rel="noopener noreferrer">
+                <a href="[813bet.one](https://813bet.one)" target="_blank" rel="noopener noreferrer">
                   <Button
                     size="lg"
                     className="bg-[#00d084] hover:bg-[#00b874] text-black font-bold px-8"
@@ -223,8 +335,34 @@ const Login = () => {
         </div>
       </section>
 
+      {/* Quick Tips Banner */}
+      <section className="py-8 bg-[#00d084]/10 border-y border-[#00d084]/20">
+        <div className="w-full px-4 sm:px-6 lg:px-12 xl:px-20">
+          <div className="max-w-5xl mx-auto">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8 text-center sm:text-left">
+              <div className="flex items-center space-x-2">
+                <CheckCircle2 className="w-5 h-5 text-[#00d084]" />
+                <span className="text-white/80 text-sm">Login 24 horas</span>
+              </div>
+              <div className="flex items-center space-x-2">
+                <CheckCircle2 className="w-5 h-5 text-[#00d084]" />
+                <span className="text-white/80 text-sm">Suporte em Português</span>
+              </div>
+              <div className="flex items-center space-x-2">
+                <CheckCircle2 className="w-5 h-5 text-[#00d084]" />
+                <span className="text-white/80 text-sm">Acesso Seguro SSL</span>
+              </div>
+              <div className="flex items-center space-x-2">
+                <CheckCircle2 className="w-5 h-5 text-[#00d084]" />
+                <span className="text-white/80 text-sm">PIX Instantâneo</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Security Section */}
-      <section className="py-20 lg:py-32 relative overflow-hidden">
+      <section className="py-16 lg:py-24 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-[#00d084]/5 to-transparent" />
         
         <div className="relative w-full px-4 sm:px-6 lg:px-12 xl:px-20">
@@ -239,14 +377,14 @@ const Login = () => {
               </p>
             </div>
 
-            <div className="grid lg:grid-cols-2 gap-8">
+            <div className="grid md:grid-cols-2 gap-6 lg:gap-8">
               {/* Security Tips */}
-              <div className="bg-white/5 border border-white/10 rounded-3xl p-8">
+              <div className="bg-white/5 border border-white/10 rounded-3xl p-6 sm:p-8">
                 <div className="flex items-center space-x-3 mb-6">
                   <div className="w-12 h-12 rounded-xl bg-[#00d084]/10 flex items-center justify-center">
                     <Shield className="w-6 h-6 text-[#00d084]" />
                   </div>
-                  <h3 className="text-xl font-bold text-white">
+                  <h3 className="text-lg sm:text-xl font-bold text-white">
                     Dicas para um Login Seguro
                   </h3>
                 </div>
@@ -261,33 +399,39 @@ const Login = () => {
               </div>
 
               {/* Password Recovery */}
-              <div className="bg-white/5 border border-white/10 rounded-3xl p-8">
+              <div className="bg-white/5 border border-white/10 rounded-3xl p-6 sm:p-8">
                 <div className="flex items-center space-x-3 mb-6">
                   <div className="w-12 h-12 rounded-xl bg-[#00d084]/10 flex items-center justify-center">
                     <Key className="w-6 h-6 text-[#00d084]" />
                   </div>
-                  <h3 className="text-xl font-bold text-white">
+                  <h3 className="text-lg sm:text-xl font-bold text-white">
                     Como Recuperar sua Senha
                   </h3>
                 </div>
                 <p className="text-white/70 text-sm leading-relaxed mb-4">
-                  Se você esquecer sua senha, basta clicar em "Esqueci minha senha" na página de login. 
+                  Se você esquecer sua senha, basta clicar em <strong className="text-[#00d084]">"Esqueceu a senha?"</strong> na página de login. 
                   Em seguida, informe o telefone ou e-mail que foi cadastrado, receba o código de 
                   verificação e crie uma nova senha.
                 </p>
-                <p className="text-white/70 text-sm leading-relaxed">
+                <p className="text-white/70 text-sm leading-relaxed mb-4">
                   Todo o procedimento é rápido, simples e seguro. Em poucos minutos você 
                   recuperará o acesso à sua conta.
                 </p>
+                <div className="bg-[#00d084]/10 border border-[#00d084]/20 rounded-xl p-4">
+                  <div className="flex items-center space-x-2 text-[#00d084] text-sm">
+                    <CheckCircle2 className="w-4 h-4" />
+                    <span>Marque "Lembre de mim" para facilitar próximos acessos</span>
+                  </div>
+                </div>
               </div>
 
               {/* Deposits & Withdrawals */}
-              <div className="bg-white/5 border border-white/10 rounded-3xl p-8">
+              <div className="bg-white/5 border border-white/10 rounded-3xl p-6 sm:p-8">
                 <div className="flex items-center space-x-3 mb-6">
                   <div className="w-12 h-12 rounded-xl bg-[#00d084]/10 flex items-center justify-center">
                     <Wallet className="w-6 h-6 text-[#00d084]" />
                   </div>
-                  <h3 className="text-xl font-bold text-white">
+                  <h3 className="text-lg sm:text-xl font-bold text-white">
                     Depósitos e Saques Após o Login
                   </h3>
                 </div>
@@ -316,12 +460,12 @@ const Login = () => {
               </div>
 
               {/* Bonuses */}
-              <div className="bg-white/5 border border-white/10 rounded-3xl p-8">
+              <div className="bg-white/5 border border-white/10 rounded-3xl p-6 sm:p-8">
                 <div className="flex items-center space-x-3 mb-6">
                   <div className="w-12 h-12 rounded-xl bg-[#00d084]/10 flex items-center justify-center">
                     <Gift className="w-6 h-6 text-[#00d084]" />
                   </div>
-                  <h3 className="text-xl font-bold text-white">
+                  <h3 className="text-lg sm:text-xl font-bold text-white">
                     Bônus para Novos Usuários
                   </h3>
                 </div>
@@ -333,10 +477,10 @@ const Login = () => {
                   {bonuses.map((bonus, index) => (
                     <div
                       key={index}
-                      className="flex items-center justify-between bg-white/5 rounded-lg px-4 py-2"
+                      className="flex items-center justify-between bg-white/5 rounded-lg px-4 py-3"
                     >
                       <span className="text-white/70 text-sm">{bonus.deposit}</span>
-                      <span className="text-[#00d084] font-bold">{bonus.bonus}</span>
+                      <span className="text-[#00d084] font-bold text-lg">{bonus.bonus}</span>
                     </div>
                   ))}
                 </div>
@@ -349,8 +493,47 @@ const Login = () => {
         </div>
       </section>
 
+      {/* FAQ Section - NEW */}
+      <section className="py-16 lg:py-24 border-t border-white/5">
+        <div className="w-full px-4 sm:px-6 lg:px-12 xl:px-20">
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl lg:text-4xl font-black text-white mb-4">
+                Perguntas Frequentes sobre <span className="text-[#00d084]">Login</span>
+              </h2>
+            </div>
+
+            <div className="space-y-4">
+              {[
+                {
+                  question: 'Esqueci minha senha, o que fazer?',
+                  answer: 'Clique em "Esqueceu a senha?" na tela de login, informe seu e-mail ou telefone cadastrado e siga as instruções para criar uma nova senha.'
+                },
+                {
+                  question: 'Posso usar o mesmo login no app e no site?',
+                  answer: 'Sim! Suas credenciais funcionam tanto no site quanto no aplicativo 813bet. Você pode alternar entre eles sem problemas.'
+                },
+                {
+                  question: 'O código SMS não chegou, o que fazer?',
+                  answer: 'Aguarde alguns segundos e clique em "Código" novamente. Verifique se o número está correto e se seu celular tem sinal. O código expira em 5 minutos.'
+                },
+                {
+                  question: 'É seguro salvar minha senha no navegador?',
+                  answer: 'Recomendamos usar a opção "Lembre de mim" apenas em dispositivos pessoais. Evite salvar senhas em computadores públicos ou compartilhados.'
+                },
+              ].map((faq, index) => (
+                <div key={index} className="bg-white/5 border border-white/10 rounded-2xl p-5 sm:p-6">
+                  <h4 className="text-white font-bold text-base sm:text-lg mb-2">{faq.question}</h4>
+                  <p className="text-white/60 text-sm leading-relaxed">{faq.answer}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* CTA Section */}
-      <section className="py-20 lg:py-32">
+      <section className="py-16 lg:py-24">
         <div className="w-full px-4 sm:px-6 lg:px-12 xl:px-20">
           <div className="relative bg-gradient-to-r from-[#00d084]/20 to-[#00d084]/5 border border-[#00d084]/30 rounded-3xl p-8 lg:p-16 text-center overflow-hidden">
             <div className="absolute inset-0 opacity-10">
@@ -367,20 +550,20 @@ const Login = () => {
                 slots e crash games incríveis esperam por você.
               </p>
               <div className="flex flex-col sm:flex-row justify-center gap-4 pt-4">
-                <a href="https://813bet.one" target="_blank" rel="noopener noreferrer">
+                <a href="[813bet.one](https://813bet.one)" target="_blank" rel="noopener noreferrer">
                   <Button
                     size="lg"
-                    className="bg-[#00d084] hover:bg-[#00b874] text-black font-bold px-8 py-6 text-lg btn-magnetic"
+                    className="bg-[#00d084] hover:bg-[#00b874] text-black font-bold px-8 py-6 text-lg btn-magnetic w-full sm:w-auto"
                   >
                     Fazer Login Agora
                     <ArrowRight className="w-5 h-5 ml-2" />
                   </Button>
                 </a>
-                <a href="https://813bet.one" target="_blank" rel="noopener noreferrer">
+                <a href="[813bet.one](https://813bet.one)" target="_blank" rel="noopener noreferrer">
                   <Button
                     size="lg"
                     variant="outline"
-                    className="border-white/30 text-white hover:bg-white/10 px-8 py-6 text-lg"
+                    className="border-white/30 text-white hover:bg-white/10 px-8 py-6 text-lg w-full sm:w-auto"
                   >
                     Criar Conta
                   </Button>

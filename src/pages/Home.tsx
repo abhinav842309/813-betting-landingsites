@@ -63,6 +63,21 @@ const Home = () => {
       title: 'Indique e Ganhe',
       subtitle: 'Ganhe bônus por cada amigo convidado',
     },
+    {
+      src: '/promo-7.jpg',
+      title: 'Indique e Ganhe',
+      subtitle: 'Ganhe bônus por cada amigo convidado',
+    },
+    {
+      src: '/promo-8.jpg',
+      title: 'Indique e Ganhe',
+      subtitle: 'Ganhe bônus por cada amigo convidado',
+    },
+    {
+      src: '/promo-9.jpg',
+      title: 'Indique e Ganhe',
+      subtitle: 'Ganhe bônus por cada amigo convidado',
+    },
   ];
 
   useEffect(() => {
@@ -132,7 +147,7 @@ const Home = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-[#0d0d0d]">
+    <div className="min-h-screen bg-[#0d0d0d] overflow-x-hidden">
       {/* Hero Section */}
       <section 
         ref={heroRef}
@@ -141,9 +156,9 @@ const Home = () => {
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <img
-            src="/hero-bg.jpg"
+            src="/hero-bg.png"
             alt="Background"
-            className="w-full h-full object-cover opacity-60"
+            className="w-full h-full object-cover object-center opacity-40"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-[#0d0d0d] via-[#0d0d0d]/80 to-transparent" />
           <div className="absolute inset-0 bg-gradient-to-t from-[#0d0d0d] via-transparent to-[#0d0d0d]/50" />
@@ -151,10 +166,12 @@ const Home = () => {
 
         {/* Content */}
         <div className="relative z-10 w-full px-4 sm:px-6 lg:px-12 xl:px-20 pt-20">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-8 items-center">
+          {/* FIX 1: Replaced two-column grid with flex centering since phone mockup is empty */}
+          <div className="flex justify-center w-full">
             {/* Left Content */}
-            <div className="space-y-8 animate-slide-up">
-              <div className="inline-flex items-center space-x-2 bg-[#00d084]/10 border border-[#00d084]/30 rounded-full px-4 py-2">
+            {/* FIX 2: Added max-w-2xl and mx-auto for proper centering */}
+            <div className="space-y-8 animate-slide-up text-center w-full max-w-2xl mx-auto">
+              <div className="inline-flex items-center space-x-2 bg-[#00d084]/10 border border-[#00d084]/30 rounded-full px-4 py-2 mx-auto">
                 <Star className="w-4 h-4 text-[#00d084]" />
                 <span className="text-[#00d084] text-sm font-medium">
                   #1 em Apostas Esportivas no Brasil
@@ -167,16 +184,17 @@ const Home = () => {
                 <span className="gradient-text">MELHORES</span>
               </h1>
 
-              <p className="text-white/70 text-lg lg:text-xl max-w-xl leading-relaxed">
+              <p className="text-white/70 text-lg lg:text-xl max-w-xl leading-relaxed mx-auto">
                 Experimente a emoção das apostas com a 813bet. Rápida, segura e 
                 projetada para vencedores. As melhores odds do mercado brasileiro.
               </p>
 
-              <div className="flex flex-col sm:flex-row gap-4">
+              {/* FIX 3: Added justify-center so buttons stay centered on mobile */}
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link to="/app">
                   <Button
                     size="lg"
-                    className="bg-[#00d084] hover:bg-[#00b874] text-black font-bold px-8 py-6 text-lg btn-magnetic animate-pulse-glow"
+                    className="bg-[#00d084] hover:bg-[#00b874] text-black font-bold px-8 py-6 text-lg btn-magnetic animate-pulse-glow w-full sm:w-auto"
                   >
                     <Download className="w-5 h-5 mr-2" />
                     BAIXAR APP
@@ -186,7 +204,7 @@ const Home = () => {
                   <Button
                     size="lg"
                     variant="outline"
-                    className="border-white/30 text-white hover:bg-white/10 px-8 py-6 text-lg"
+                    className="border-white/30 text-white hover:bg-white/10 px-8 py-6 text-lg w-full sm:w-auto"
                   >
                     COMEÇAR AGORA
                     <ChevronRight className="w-5 h-5 ml-2" />
@@ -195,7 +213,8 @@ const Home = () => {
               </div>
 
               {/* Stats */}
-              <div className="grid grid-cols-4 gap-4 pt-8 border-t border-white/10">
+              {/* FIX 4: Changed grid-cols-4 to grid-cols-2 sm:grid-cols-4 so stats stack on mobile */}
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-8 border-t border-white/10">
                 {stats.map((stat, index) => (
                   <div key={index} className="text-center">
                     <div className="text-2xl lg:text-3xl font-black text-[#00d084]">
@@ -206,23 +225,6 @@ const Home = () => {
                     </div>
                   </div>
                 ))}
-              </div>
-            </div>
-
-            {/* Right Content - Phone Mockup */}
-            <div 
-              ref={phoneRef}
-              className="relative flex justify-center lg:justify-end perspective-1000"
-              style={{ transition: 'transform 0.1s ease-out' }}
-            >
-              <div className="relative animate-float">
-                <img
-                  src="/phone-hero.png"
-                  alt="813bet App"
-                  className="w-full max-w-[320px] lg:max-w-[400px] drop-shadow-2xl"
-                />
-                {/* Glow effect */}
-                <div className="absolute inset-0 bg-[#00d084]/20 blur-3xl -z-10 rounded-full scale-75" />
               </div>
             </div>
           </div>
@@ -236,7 +238,7 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Promo carousel section - FIXED */}
+      {/* Promo carousel section */}
       <section className="py-16 lg:py-24 overflow-hidden">
         <div className="w-full px-4 sm:px-6 lg:px-12 xl:px-20">
           
@@ -250,7 +252,7 @@ const Home = () => {
             </h2>
           </div>
 
-          {/* Carousel - Fixed for smooth circular sliding */}
+          {/* Carousel */}
           <Carousel
             opts={{
               loop: true,
@@ -265,24 +267,23 @@ const Home = () => {
             <CarouselContent className="-ml-3 md:-ml-4">
               {promoItems.map((item, index) => (
                 <CarouselItem
-  key={index}
-  className="pl-3 md:pl-4 basis-[90%] sm:basis-[70%] md:basis-[60%] lg:basis-[50%]"
->
+                  key={index}
+                  className="pl-3 md:pl-4 basis-[90%] sm:basis-[70%] md:basis-[60%] lg:basis-[50%]"
+                >
                   <div className="group relative overflow-hidden rounded-2xl md:rounded-3xl border border-white/10 bg-white/5 shadow-xl hover:border-[#00d084]/30 transition-all duration-300">
                     
                     {/* Image Container */}
-                    {/* Image Container */}
-                <div className="relative w-full aspect-[1072/552] bg-[#0d0d0d] flex items-center justify-center overflow-hidden">
-                  <img
-                    src={item.src}
-                    alt={item.title}
-                    className="w-full h-full object-contain scale-125 transition-transform duration-500"
-                  />
+                    <div className="relative w-full aspect-[1072/552] bg-[#0d0d0d] flex items-center justify-center overflow-hidden">
+                      {/* FIX 5: Removed scale-125 which was causing overflow; use object-cover instead */}
+                      <img
+                        src={item.src}
+                        alt={item.title}
+                        className="w-full h-full object-cover transition-transform duration-500"
+                      />
 
-
-                     {/* Overlay */}
-                     <div className="absolute inset-0 bg-gradient-to-t from-[#0d0d0d] via-transparent to-transparent" />
-                   </div>
+                      {/* Overlay */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#0d0d0d] via-transparent to-transparent" />
+                    </div>
 
                     {/* Text Content */}
                     <div className="absolute bottom-0 left-0 right-0 p-4 md:p-6">
@@ -342,7 +343,8 @@ const Home = () => {
           </div>
 
           {/* Features Grid */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+          {/* FIX 6: Added grid-cols-1 as base — was missing, causing layout break on mobile */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
             {features.map((feature, index) => (
               <div
                 key={index}
@@ -370,7 +372,8 @@ const Home = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-[#00d084]/5 to-transparent" />
         
         <div className="relative w-full px-4 sm:px-6 lg:px-12 xl:px-20">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+          {/* FIX 7: Added grid-cols-1 as base — was missing */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             {/* Phone Image */}
             <div className="relative flex justify-center order-2 lg:order-1">
               <div className="relative">
@@ -386,7 +389,7 @@ const Home = () => {
             </div>
 
             {/* Content */}
-            <div className="space-y-8 order-1 lg:order-2">
+            <div className="space-y-8 order-1 lg:order-2 text-center lg:text-left">
               <h2 className="text-3xl lg:text-5xl font-black text-white leading-tight">
                 APOSTAS AO VIVO <br />
                 <span className="text-[#00d084]">EM TEMPO REAL</span>
@@ -406,7 +409,7 @@ const Home = () => {
                 ].map((item, index) => (
                   <div
                     key={index}
-                    className="flex items-center space-x-4 text-white/80"
+                    className="flex items-center space-x-4 text-white/80 justify-center lg:justify-start"
                   >
                     <div className="w-10 h-10 rounded-lg bg-[#00d084]/10 flex items-center justify-center flex-shrink-0">
                       <item.icon className="w-5 h-5 text-[#00d084]" />
@@ -416,15 +419,17 @@ const Home = () => {
                 ))}
               </div>
 
-              <Link to="/app">
-                <Button
-                  size="lg"
-                  className="bg-[#00d084] hover:bg-[#00b874] text-black font-bold px-8 mt-4 btn-magnetic"
-                >
-                  EXPLORAR APP
-                  <ChevronRight className="w-5 h-5 ml-2" />
-                </Button>
-              </Link>
+              <div className="flex justify-center lg:justify-start">
+                <Link to="/app">
+                  <Button
+                    size="lg"
+                    className="bg-[#00d084] hover:bg-[#00b874] text-black font-bold px-8 mt-4 btn-magnetic"
+                  >
+                    EXPLORAR APP
+                    <ChevronRight className="w-5 h-5 ml-2" />
+                  </Button>
+                </Link>
+              </div>
             </div>
           </div>
         </div>
@@ -440,8 +445,9 @@ const Home = () => {
               <div className="absolute bottom-0 left-0 w-64 h-64 bg-[#00d084] rounded-full blur-3xl" />
             </div>
 
-            <div className="relative grid lg:grid-cols-2 gap-12 items-center">
-              <div className="space-y-6">
+            {/* FIX 8: Added grid-cols-1 as base — was missing */}
+            <div className="relative grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+              <div className="space-y-6 text-center lg:text-left">
                 <h2 className="text-3xl lg:text-5xl font-black text-white">
                   BAIXE O APP <span className="text-[#00d084]">AGORA</span>
                 </h2>
@@ -449,10 +455,11 @@ const Home = () => {
                   Disponível para iOS e Android. Comece a apostar em minutos com 
                   nosso aplicativo rápido e seguro.
                 </p>
-                <div className="flex flex-col sm:flex-row gap-4">
+                {/* FIX 9: Added items-center sm:items-start so button centers on mobile */}
+                <div className="flex flex-col sm:flex-row gap-4 items-center sm:items-start justify-center lg:justify-start">
                   <Button 
                     size="lg"
-                    className="bg-white text-black hover:bg-white/90 font-bold px-10 py-5 text-xl btn-magnetic animate-pulse-glow"
+                    className="bg-white text-black hover:bg-white/90 font-bold px-10 py-5 text-xl btn-magnetic animate-pulse-glow w-full sm:w-auto"
                     onClick={() => window.open('https://example.com', '_blank', 'noopener,noreferrer')} 
                   >
                     <Download className="w-5 h-5 mr-2" />
@@ -465,7 +472,7 @@ const Home = () => {
                 <img
                   src="/phone-download.png"
                   alt="Download App"
-                  className="w-full max-w-[250px] lg:max-w-[300px] drop-shadow-2xl"
+                  className="w-full max-w-[200px] sm:max-w-[250px] lg:max-w-[300px] drop-shadow-2xl"
                 />
               </div>
             </div>
