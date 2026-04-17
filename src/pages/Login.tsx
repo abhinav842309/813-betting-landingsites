@@ -14,7 +14,7 @@ import {
   AlertTriangle,
   QrCode,
   Clock,
-  Eye,
+
   MousePointer,
   Info
 } from 'lucide-react';
